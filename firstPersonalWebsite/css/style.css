@@ -20,7 +20,12 @@ body{
     font-family: "Readex Pro", sans-serif;
     font-style: normal;
 }
-
+input::placeholder{
+    color: var(--gray);
+}
+textarea::placeholder{
+    color: var(--gray);
+}
 #header{
     width: 100%;
     display: flex;
@@ -66,31 +71,27 @@ nav>ul>li>a:active{
 /* hero content */
 #hero{
     width: 100%;
-    min-height: 400px;
-    color: var(--white);
     display: flex;
     text-align: center;
-    line-height: 1.75;
+    color: var(--color1111);
     flex-direction: column;
 }
 .text-container{
-    background-image: url(/firstPersonalWebsite/images/bg.png);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-image: url(/firstPersonalWebsite/images/OF18O70.jpg);
     background-repeat: no-repeat;
-    padding: 0 50px;
     background-size: cover;
-    text-shadow: -1px 1px 1px var(--color1111);
+    background-attachment: fixed;
+    padding: 100px 50px;
 }
 
-.text-container>h3{
-    margin-top: 100px;
-    font-size: var(--medium);
-}
 .text-container>h1{
-    font-size: var(--big);
+    font-size: var(--medium);
 }
 .text-container>p{
     font-size: var(--small);
-    margin-bottom: 100px;
 }
 
 .news-container{
@@ -112,7 +113,7 @@ nav>ul>li>a:active{
     gap: 10px;
     margin: 20px 0;
 }
-input[type="email"]{
+.news-form input[type="email"]{
     border-radius: 3px;
     font-size: var(--small);
     outline: none;
@@ -124,12 +125,10 @@ input[type="email"]{
     color: var(--color1111);
     background-color: var(--white);
 }
-input[type="email"]:focus{
+.news-form input[type="email"]:focus{
     border: 2px solid var(--color1);
 }
-input::placeholder{
-    color: var(--gray);
-}
+
 .news-btn{
     padding: 12px;
     outline: none;
@@ -156,15 +155,26 @@ input::placeholder{
 /* projects or gallary of my business */
 #projects{
     width: 100%;
+    background-image: url(/firstPersonalWebsite/images/OF18O70.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     display: flex;
     align-items: center;
     flex-direction: column;
+    min-height: 500px;
+    padding: 50px 0;
 }
-#projects>h1{
-    font-size: var(--big);
+.projects-title{
+    width: 100%;
+    text-align: center;
     color: var(--color1111);
-    margin: 100px 0;
+    margin: 0 0 50px;
 }
+.projects-title>h1{
+    font-size: var(--big);
+}
+
 .projects-container{
     width: 100%;
     display: flex;
@@ -173,36 +183,32 @@ input::placeholder{
     justify-content: center;
     gap: 50px;
 }
+
 .project-card{
     padding: 15px ;
     margin: 0px 50px;
     border-radius: 10px;
-    box-shadow: 0px 0px 5px var(--color1111);
     color: var(--color1111);
+    box-shadow: 0px 0px transparent var(--color1111);
     width: 350px;
     min-height: 300px;
     display: flex;
     line-height: 1.5;
     align-items: center;
     flex-direction: column;
-}
-.project-img{
-    width: 100%;
-    overflow: hidden;
-    background-size: cover;
-}
-.project-img img{
-    display: block;
-    height: auto;
-    width: 350px;
-    overflow: hidden;
-    background-size: cover;
     transition: 0.3s ease-in-out;
 }
-.project-img img:hover {
-    transform: scale(1.1);
-    cursor:all-scroll;
+.project-card:hover{
+    transform:scale(1.03);
 }
+.project-img{
+    border: 1px solid var(--color1111);
+}
+.project-img img{
+    width: 350px;
+    height: auto;
+}
+
 .project-title{
     display: flex;
     justify-content: space-between;
@@ -230,17 +236,167 @@ input::placeholder{
     padding: 5px;
 }
 .project-content>a{
-    background-color: var(--color1);
+    background-color: var(--color11);
     padding: 10px;
     font-size: var(--small);
-    box-shadow: inset -1px -1px 4px var(--color1111);
+    box-shadow: inset -1px -1px 2px var(--color1111);
     color: var(--white);
     text-decoration: none;
     transition: 0.2s ease;
 }
 .project-content>a:hover{
-    background-color: var(--color11);
+    background-color: var(--color111);
 }
 .project-content>a:active{
-    box-shadow: inset 1px 1px 4px var(--color1111);
+    box-shadow: inset 1px 1px 2px var(--color1111);
+}
+#contact{
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px 50px;
+    gap: 100px;
+    background-color: var(--color1111);
+}
+.form-container{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.form-title{
+    color: var(--white);
+    margin-bottom: 20px;
+    padding: 0;
+}
+.form-title>h1{
+    color: var(--white);
+    font-size: var(--big);
+}
+
+.form-container .form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: right;
+
+}
+.form .inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.form small{
+  color: var(--white);
+}
+.inputs label{
+    color: var(--white);
+    font-size: var(--small);
+}
+.form .inputs input[type="email"],input[type="text"],textarea{
+    border-radius: 3px;
+    font-size: var(--small);
+    outline: none;
+    box-shadow: inset 0px 0px 2px var(--color1);
+    border: 2px solid transparent;
+    padding: 10px;
+    font-weight: bold;
+    flex-grow: 1;
+    color: var(--color1111);
+    background-color: var(--white);
+}
+.form .inputs input[type="email"]:focus, input[type="text"]:focus,textarea:focus{
+    border: 2px solid var(--color1);
+}
+
+.form input[type="submit"]{
+    padding: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: inset -1px -1px 2px var(--color1111);
+    font-size: var(--small);
+    background-color: var(--color11);
+    font-weight: bold;
+    color: var(--white);
+    transition: 0.2s ease;
+}
+
+.form input[type="submit"]:hover{
+    background-color: var(--color111);
+    
+}
+.form input[type="submit"]:active{
+    box-shadow: inset 1px 1px 2px var(--color1111);
+}
+
+.contact-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+    line-height:2;
+}
+
+.contact-info>h1{
+    font-size: var(--big);
+}
+
+.contact-info .infos>p{
+    font-size: var(--small);
+}
+
+.contact-icon{
+display: flex;
+flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.contact-icon>h1{
+    color: var(--white);
+    font-size: var(--big);
+}
+.icons{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.icons a{
+    font-size: var(--medium);
+    color: var(--white);
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: inset -1px -1px 2px var(--color111);
+    background-color: var(--color1);
+    transition: 0.3s ease;
+}
+.icons a:hover{
+    background-color: var(--color11);
+}
+.icons a:active{
+    box-shadow: inset -3px -3px 4px var(--color111);
+}
+.footer{
+    text-align: center;
+    background-image: url(/firstPersonalWebsite/images/OF18O70.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 20px;
+    width: 100%;
+}
+.footer>p{
+    color: var(--color1111);
+    font-size: var(--small);
+}
+.footer>p>span{
+    color: var(--color111);
 }
