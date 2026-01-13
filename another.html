@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <h1 id="hona"></h1>
+    <p class="para"></p>
+    <p class="para1"></p>
+
+    <script>
+    let honazail= document.getElementById("hona");
+    let parazail= document.getElementsByClassName("para");
+    let para1zail= document.getElementsByClassName("para1");
+    let allOfParagraphszail= document.getElementsByTagName("p");
+
+    console.log(honazail);
+    honazail.innerHTML= "This is hona id"
+    console.log(parazail);
+    parazail[0].innerHTML="This is para class"
+    console.log(para1zail);
+    console.log(allOfParagraphszail);
+    allOfParagraphszail[1].innerHTML="<b style='color: red;'>This is all of parargraphs.</b>"
+    </script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+body{
+      font-family: "Science Gothic", sans-serif;
+}
+#title{
+    color: red;
+    background-color: yellow;
+}
+.title1{
+    color: yellow;
+    background-color: red;
+}
+.box2> h3{
+    color: wheat;
+    background-color: black;
+}
+.box2> h3{
+    color: #e20e0e;
+    border: 2px solid #e20e0e;
+    padding: 10px; /*box module*/
+    margin: 10px; /*box module*/
+}
+.box2> h4{
+    color: rgb(197, 19, 19);
+    background-color: rgba(193, 37, 37, 0.249);
+}
+input[type="text"]{
+    border: 2px dashed blue;
+}
+/* font */
+.box2> h5{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13pt;
+    font-weight: bold;
+    font-variant: small-caps;
+    font-style: italic;
+}
+/* text */
+.box2> h6{
+    color: teal;
+    text-decoration: underline;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 5px 3px 2px gray;
+    text-indent: 4cm;
+    direction: ltr;
+}
+.box5>.content{
+    width:200px;
+    height: 200px;
+    color: wheat;
+    background-color: #2ee20e;
+}
+.box5>.content1{
+    width: 400px;
+    height: 400px;
+    margin-right: 20px;
+    margin-left: 40px;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    padding: 10px;
+    color: wheat;
+    background-color: #e20e0e;
+}
+.box5>.content2{
+    width:200px;
+    height: 200px;
+    color: wheat;
+    background-color: #430ee2;
+}
+.box1{
+    /* background-color: wheat; */
+    background-image: url(/Web\ development\ basics/images/laptop.png);
+    background-position: center;
+    height: 1000px;
+    width: 1000px;
+    background-repeat: no-repeat;
+}
+.box10>div> a:link{
+    color: orange;
+    background-color: black;
+}
+.box10>div> a:visited{
+    color: red;
+    background-color: yellow;
+    text-decoration: underline;
+}
+.box10>div> a:hover{
+    color: red;
+    text-decoration: underline;
+    background-color: plum;
+}
+.box10>div> a:active{
+    color: coral;
+    background-color: aqua;
+}
+ol{
+    list-style: upper-latin;
+}
+ul{
+    /* list-style-image: url(images/laptop.png); */
+    list-style: disc;
+}
+
+table td{
+    border: 1px solid red;
+    padding: 15px;
+}
+th{
+    border: 1px solid yellow;
+    color: white;
+    background-color: #430ee2;
+    padding: 15px;
+}
+table{
+    border-collapse: collapse;
+}
+form{
+    background-color: antiquewhite;
+    padding: 20px;
+    width: 400px;
+    
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 40px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+label{
+    color: rgb(2, 2, 68);
+    
+}
+input[type="text"],
+input[type="password"]{
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 30px;
+    width: 100%;
+}
+input[type="submit"]{
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    display: inline-block;
+    background-color: brown;
+    border: 1px solid black;
+    color: aliceblue;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+#postest{
+    height: 900px;
+}
+
+.post{
+    display: inline-block;
+    border: 1px solid black;
+    width: 100%;
+    height: 120px;
+}
+.post:last-child{
+    position: fixed;
+    width: 99%;
+    top: 100px;
+}
+
+#contentw{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.post1{
+    background-color: #430ee2;
+    width: 400px;
+    margin: 20px;
+    font-size: 30px;
+}
+.post2{
+    background-color: #e20e0e;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+nav{
+    float: right;
+    width: 200px;
+}
+i{
+    font-size: 16px;
+    color:#e20e0e;
+}
