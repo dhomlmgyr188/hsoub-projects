@@ -1,17 +1,62 @@
 @import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap');
-:root{
-    --color1:#00AEEB;
-    --color11: #2095C0;
-    --color111: #327B96;
-    --color1111: #2B3133;
-    --black: #000000;
-    --white: #ffffff;
-    --gray: #7f7f7f;
-    --big: 1.8rem;
-    --medium: 1.5rem;
-    --small: 1rem;
-    --clost-btn: 3rem;
+:root {
+  /* ألوان ثابتة */
+  --black: #000000;
+  --white: #ffffff;
+  --gray: #7f7f7f;
+
+  /* أحجام */
+  --big: 1.8rem;
+  --medium: 1.5rem;
+  --small: 1rem;
 }
+
+/* Aqua Theme */
+.theme-blue {
+  --color1: #0062EB;
+  --color11: #0053C7;
+  --color111: #0044A3;
+  --color1111: #00204D;
+}
+
+/* Green Theme */
+.theme-green {
+  --color1: #23EA00;
+  --color11: #1EC700;
+  --color111: #189E00;
+  --color1111: #0B4D00;
+}
+
+/* Red Theme */
+.theme-red {
+  --color1: #EB2700;
+  --color11: #C72100;
+  --color111: #A31A00;
+  --color1111: #4D0D00;
+}
+/* Yellow Theme */
+.theme-yellow {
+  --color1: #EBB000;
+  --color11: #C79500;
+  --color111: #A37B00;
+  --color1111: #4D3900;
+}
+/* Light Mode (افتراضي) */
+.light-mode {
+  --bg-main: #ffffff;
+  --bg-section: #d8d8d8;
+  --text-main: #111;
+  --border-color: #ddd;
+}
+
+.dark-mode {
+  --bg-main: #0f0f0f;
+  --bg-section: #242424;
+  --text-main: #ffffff;
+  --border-color: #333;
+}
+
+
 *,
 *::before,
 *::after{
@@ -20,6 +65,8 @@
     box-sizing: border-box;
 }
 body{
+    background-color: var(--bg-main);
+    color: var(--text-main);
     display: flex;
     flex-wrap: wrap;
     font-family: "Readex Pro", sans-serif;
@@ -28,12 +75,11 @@ body{
 section{
     scroll-margin-top: 100px;
 }
+textarea::placeholder,
 input::placeholder{
     color: var(--gray);
 }
-textarea::placeholder{
-    color: var(--gray);
-}
+
 #header{
     position: fixed;
     top: 0;
@@ -44,7 +90,7 @@ textarea::placeholder{
     flex-wrap: row wrap;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--color1111);
+    background-color: var(--bg-section);
     padding: 0 50px;
     z-index: 999;
 }
@@ -124,13 +170,7 @@ nav>ul>li>a:active{
     font-size: var(--big);
     color: var(--color1111);
 }
-.close-btn {
-    font-size: var(--clost-btn);
-    color: var(--color1111);
-    cursor: pointer;
-    position: absolute;
-    top: 20px;
-}
+
 
 /* hero content */
 #hero{
@@ -138,20 +178,19 @@ nav>ul>li>a:active{
     width: 100%;
     display: flex;
     text-align: center;
-    color: var(--color1111);
     flex-direction: column;
+    background-color: var(--bg-main);
+    color: var(--text-main);
 }
 .text-container{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background-image: url(../images/OF18O70.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
     padding: 100px 50px;
 }
-
+.text-container>h1 span{
+    color: var(--color1);
+}
 .text-container>h1{
     font-size: var(--medium);
 }
@@ -166,7 +205,7 @@ nav>ul>li>a:active{
     align-items: center;
     padding: 20px 50px;
     gap: 20px;
-    background-color: var(--color1111);
+    background-color: var(--bg-section);
     min-height: 100px;
 }
 .news-container>h2{
@@ -188,8 +227,8 @@ nav>ul>li>a:active{
     border: 2px solid transparent;
     padding: 10px 30px;
     font-weight: bold;
-    color: var(--color1111);
-    background-color: var(--white);
+    color: var(--text-main);
+    background-color: var(--bg-main);
 }
 .news-form input[type="email"]:focus{
     border: 2px solid var(--color1);
@@ -220,11 +259,8 @@ nav>ul>li>a:active{
 
 /* projects or gallary of my business */
 #projects{
+    background-color: var(--bg-main);
     width: 100%;
-    background-image: url(../images/OF18O70.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
     display: flex;
     gap: 50px;
     padding: 50px 50px;
@@ -239,12 +275,14 @@ nav>ul>li>a:active{
     gap: 10px;
     width: 100%;
     text-align: center;
-    color: var(--color1111);
 }
 .projects-title>h1{
+    color: var(--color1);
     font-size: var(--big);
 }
-
+.projects-title small{
+    color: var(--text-main);
+}
 .projects-container{
     width: 100%;
     display: flex;
@@ -260,7 +298,8 @@ nav>ul>li>a:active{
 .project-card{
     margin: 0 auto;
     border-radius: 10px;
-    color: var(--color1111);
+    background-color: var(--bg-section);
+    color: var(--text-main);
     box-shadow: 0px 0px transparent var(--color1111);
     width: 100%;
     max-width: 450px;
@@ -272,7 +311,7 @@ nav>ul>li>a:active{
 }
 
 .project-img{
-    border: 1px solid var(--color1111);
+    border: 1px solid var(--border-color);
     width: 100%;
     max-width: 450px;
     height: 250px;
@@ -287,7 +326,6 @@ nav>ul>li>a:active{
     align-items: center;
 }
 .project-title>h1{
-    color: var(--color1111);
     font-size: var(--small);
     font-weight: bold;
 }
@@ -319,7 +357,7 @@ nav>ul>li>a:active{
     transition: 0.2s ease;
 }
 .project-content>a:hover{
-    background-color: var(--color111);
+    background-color: var(--color11);
 }
 .project-content>a:active{
     box-shadow: inset 1px 1px 2px var(--color1111);
@@ -332,7 +370,7 @@ nav>ul>li>a:active{
     flex-wrap: wrap;
     padding: 50px 50px;
     gap: 100px;
-    background-color: var(--color1111);
+    background-color: var(--bg-section);
 }
 .form-container{
     display: flex;
@@ -367,7 +405,7 @@ nav>ul>li>a:active{
 .swiper-pagination-bullet {
     width: 16px;       
     height: 16px;
-    background-color: var(--white); 
+    background-color: var(--color1111); 
     opacity: 1
 }
 .swiper-pagination-bullet-active {
@@ -380,8 +418,12 @@ nav>ul>li>a:active{
     color: var(--white);
     gap: 10px;
 }
+.form-title small{
+    color: var(--text-main);
+    
+}
 .form-title>h1{
-    color: var(--white);
+    color: var(--color1);
     font-size: var(--big);
 }
 
@@ -398,13 +440,14 @@ nav>ul>li>a:active{
     gap: 15px;
 }
 .form small{
-  color: var(--white);
+    color: var(--text-main);
 }
 .inputs label{
-    color: var(--white);
+    color: var(--text-main);
     font-size: var(--small);
 }
-.form .inputs input[type="email"],input[type="text"],textarea{
+.form .inputs input[type="email"],
+input[type="text"],textarea{
     border-radius: 3px;
     font-size: var(--small);
     outline: none;
@@ -413,8 +456,8 @@ nav>ul>li>a:active{
     padding: 10px;
     font-weight: bold;
     flex-grow: 1;
-    color: var(--color1111);
-    background-color: var(--white);
+    color: var(--text-main);
+    background-color: var(--bg-main);
 }
 .form .inputs input[type="email"]:focus, input[type="text"]:focus,textarea:focus{
     border: 2px solid var(--color1);
@@ -435,7 +478,7 @@ nav>ul>li>a:active{
 }
 
 .form input[type="submit"]:hover{
-    background-color: var(--color111);
+    background-color: var(--color11);
     
 }
 .form input[type="submit"]:active{
@@ -452,6 +495,7 @@ nav>ul>li>a:active{
 }
 
 .contact-info>h1{
+    color: var(--color1);
     font-size: var(--big);
 }
 
@@ -461,6 +505,7 @@ nav>ul>li>a:active{
     gap: 10px;
 }
 .contact-info .infos>p{
+    color: var(--text-main);
     font-size: var(--small);
 }
 
@@ -473,7 +518,7 @@ nav>ul>li>a:active{
     
 }
 .contact-icon>h1{
-    color: var(--white);
+    color: var(--color1);
     font-size: var(--big);
 }
 .icons{
@@ -497,22 +542,19 @@ nav>ul>li>a:active{
     transition: 0.3s ease;
 }
 .icons a:hover{
-    background-color: var(--color1);
+    background-color: var(--color11);
 }
 .icons a:active{
     box-shadow: inset -3px -3px 4px var(--color111);
 }
 .footer{
+    background-color: var(--bg-main);
     text-align: center;
-    background-image: url(../images/OF18O70.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
     padding: 20px;
     width: 100%;
 }
 .footer>p{
-    color: var(--color1111);
+    color: var(--text-main);
     font-size: var(--small);
 }
 .footer>p>span{
@@ -557,6 +599,10 @@ nav>ul>li>a:active{
     .swiper-button-prev,
     .swiper-button-next {
         display: none ;
+    }
+    .text-container>h1{
+        display: flex;
+        flex-direction: column;
     }
 }
 /* ≤ 570px */
