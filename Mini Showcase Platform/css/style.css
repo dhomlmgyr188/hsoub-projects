@@ -1,0 +1,115 @@
+@font-face{
+    font-family: "Amiri";
+    src: url(../assets/fonts/Amiri-Regular.ttf) format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face{
+    font-family: "Amiri";
+    src: url(../assets/fonts/Amiri-Bold.ttf) format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+::before,
+::after,
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Amiri', serif !important;
+}
+#hero{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    min-height: 30vh;
+}
+
+#hero span{
+    font-weight: 700;
+    color: blue;
+}
+
+#how-it-works{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.how-it-works-container-top>h1{
+    color: blue;
+    width: 100%;
+    margin: 50px 0;
+    font-weight: 700;
+    text-align: center;
+}
+.how-it-works-container-bottom{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+.how-it-works-list ol{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+.how-it-works-list ol li{
+    font-size: 1.2rem;
+    color: blue;
+    font-weight: 700;
+}
+.how-it-works-list ol li ul li{
+    list-style: disc;
+    color: black;
+    line-height: 2;
+    font-weight: 400;
+}
+.how-it-works-vedio{
+    width: 100%;
+    height: 100%;
+    max-width: 640px;
+    max-height: 360px;
+    border: 2px solid black;
+}
+#latest-projects{
+    display: flex;
+    flex-direction: column;
+}
+#latest-projects>h1{
+    color: blue;
+    font-weight: 700;
+    width: 100%;
+    margin: 50px 0;
+    text-align: center;
+}
+.latest-projects-container{
+    margin-bottom: 50px;
+}
+#faq{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+}
+#faq>h1{
+    color: blue;
+    width: 100%;
+    margin: 50px 0;
+    font-weight: 700;
+    text-align: center;
+}
+.faq-container{
+    margin-bottom: 50px;
+}

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/bootstrap.rtl.min.css">
+    <title>منصة طيبتي ويب</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        #header {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .nav-link {
+            color: #333;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+        
+        #new-project {
+            padding: 40px 0;
+            min-height: calc(100vh - 150px);
+        }
+        
+        #new-project h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .form-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-right: 4px solid var(--primary-color);
+        }
+        
+        .section-title {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .required-field::after {
+            content: " *";
+            color: #e63946;
+        }
+        
+        .form-control, .form-select {
+            border-radius: 8px;
+            padding: 10px 15px;
+            border: 1px solid #ced4da;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 0.25rem rgba(76, 201, 240, 0.25);
+        }
+        
+        .char-counter {
+            font-size: 0.85rem;
+            color: #6c757d;
+            text-align: left;
+        }
+        
+        .char-counter.invalid {
+            color: #e63946;
+        }
+        
+        .file-upload-container {
+            border: 2px dashed #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            background-color: #f8f9fa;
+        }
+        
+        .file-upload-container:hover {
+            border-color: var(--accent-color);
+            background-color: rgba(76, 201, 240, 0.05);
+        }
+        
+        .file-upload-icon {
+            font-size: 3rem;
+            color: #adb5bd;
+            margin-bottom: 10px;
+        }
+        
+        .file-info {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        .btn-custom {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+        }
+        
+        .btn-custom:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary-custom {
+            background-color: #6c757d;
+            color: white;
+            border-radius: 8px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-secondary-custom:hover {
+            background-color: #5a6268;
+            color: white;
+        }
+        
+        #footer {
+            padding: 20px 0;
+            margin-top: 40px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .form-section {
+                padding: 15px;
+            }
+            
+            .btn-custom, .btn-secondary-custom {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header" class="bg-body-secondary">
+        <nav class="navbar navbar-expand-lg px-5">
+            <div class="container-fluid">
+              <a class="navbar-brand fs-2" href="./index.html">طيبتي ويب</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active fs-4" aria-current="page" href="./index.html">الرئيسية</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link fs-4" href="./new-project.html">مشروع جديد</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link fs-4" href="./browse.projects.html">تصفح المشاريع</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>    
+    </header>
+
+    <section id="new-project" class="bg-body-tertiary">
+        <div class="container">
+            <h1 class="mb-4">إضافة مشروع جديد</h1>
+            
+            <form id="projectForm">
+                <!-- معلومات الناشر -->
+                <div class="form-section">
+                    <h3 class="section-title">معلومات الناشر</h3>
+                    
+                    <div class="mb-3">
+                        <label for="publisherName" class="form-label required-field">الاسم الثلاثي للناشر</label>
+                        <input type="text" class="form-control" id="publisherName" placeholder="أدخل الاسم الثلاثي (لا يقل عن 3 كلمات ولا يزيد عن 30 حرفاً)" required>
+                        <div class="char-counter mt-1">
+                            <span id="publisherNameCounter">0</span>/30 حرف
+                        </div>
+                        <div class="form-text">يجب إدخال الاسم ثلاثي (اسم + اسم الأب + اسم الجد)</div>
+                    </div>
+                </div>
+                
+                <!-- معلومات المشروع الأساسية -->
+                <div class="form-section">
+                    <h3 class="section-title">معلومات المشروع</h3>
+                    
+                    <div class="mb-3">
+                        <label for="projectTitle" class="form-label required-field">عنوان المشروع</label>
+                        <input type="text" class="form-control" id="projectTitle" placeholder="أدخل عنوان المشروع (لا يزيد عن 30 حرفاً)" required>
+                        <div class="char-counter mt-1">
+                            <span id="projectTitleCounter">0</span>/30 حرف
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="projectDescription" class="form-label required-field">وصف المشروع</label>
+                        <textarea class="form-control" id="projectDescription" rows="4" placeholder="أدخل وصفاً مفصلاً للمشروع (لا يقل عن 50 حرفاً ولا يزيد عن 200 حرف)" required></textarea>
+                        <div class="char-counter mt-1">
+                            <span id="projectDescriptionCounter">0</span>/200 حرف
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- التقنيات المستخدمة -->
+                <div class="form-section">
+                    <h3 class="section-title">التقنيات المستخدمة</h3>
+                    
+                    <div class="mb-3">
+                        <label for="technologies" class="form-label required-field">اختر التقنيات المستخدمة</label>
+                        <select class="form-select" id="technologies" multiple size="6" required>
+                            <option value="html">HTML</option>
+                            <option value="css">CSS</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="bootstrap">Bootstrap</option>
+                            <option value="react">React</option>
+                            <option value="vue">Vue.js</option>
+                            <option value="angular">Angular</option>
+                            <option value="php">PHP</option>
+                            <option value="laravel">Laravel</option>
+                            <option value="nodejs">Node.js</option>
+                            <option value="express">Express.js</option>
+                            <option value="mysql">MySQL</option>
+                            <option value="mongodb">MongoDB</option>
+                            <option value="python">Python</option>
+                            <option value="django">Django</option>
+                        </select>
+                        <div class="form-text">يمكنك اختيار أكثر من تقنية باستخدام زر Ctrl. الحد الأدنى: تقنية واحدة، الحد الأقصى: 6 تقنيات</div>
+                        <div class="char-counter mt-1">
+                            <span id="technologiesCounter">0</span>/6 تقنيات
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- نوع المشروع والتركيز -->
+                <div class="form-section">
+                    <h3 class="section-title">تصنيف المشروع</h3>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="projectType" class="form-label required-field">نوع المشروع</label>
+                            <select class="form-select" id="projectType" required>
+                                <option value="" selected disabled>اختر نوع المشروع</option>
+                                <option value="portfolio">بورتوفوليو/سيرة ذاتية</option>
+                                <option value="company">موقع شركة/مؤسسة</option>
+                                <option value="ecommerce">متجر إلكتروني</option>
+                                <option value="blog">مدونة/موقع محتوى</option>
+                                <option value="application">تطبيق ويب تفاعلي</option>
+                                <option value="dashboard">لوحة تحكم/إدارة</option>
+                                <option value="other">نوع آخر</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="projectFocus" class="form-label required-field">تركيز المشروع</label>
+                            <select class="form-select" id="projectFocus" required>
+                                <option value="" selected disabled>اختر التركيز التقني</option>
+                                <option value="frontend">فرونت إند (واجهة أمامية)</option>
+                                <option value="backend">باك إند (واجهة خلفية)</option>
+                                <option value="fullstack">فول ستاك (واجهة أمامية وخلفية)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- نوع العمل وحالة المشروع -->
+                <div class="form-section">
+                    <h3 class="section-title">تفاصيل العمل</h3>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="workType" class="form-label required-field">نوع العمل</label>
+                            <select class="form-select" id="workType" required>
+                                <option value="" selected disabled>اختر نوع العمل</option>
+                                <option value="individual">عمل فردي</option>
+                                <option value="team">عمل جماعي</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="projectStatus" class="form-label required-field">حالة المشروع</label>
+                            <select class="form-select" id="projectStatus" required>
+                                <option value="" selected disabled>اختر حالة المشروع</option>
+                                <option value="completed">مكتمل</option>
+                                <option value="inprogress">قيد التطوير</option>
+                                <option value="planned">مخطط له</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- روابط المشروع -->
+                <div class="form-section">
+                    <h3 class="section-title">روابط المشروع</h3>
+                    
+                    <div class="mb-3">
+                        <label for="projectUrl" class="form-label">رابط المشروع المباشر</label>
+                        <input type="url" class="form-control" id="projectUrl" placeholder="https://example.com">
+                        <div class="form-text">أدخل رابط المشروع إذا كان نشطاً على الإنترنت</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="githubUrl" class="form-label required-field">رابط GitHub للمشروع</label>
+                        <input type="url" class="form-control" id="githubUrl" placeholder="https://github.com/username/project" required>
+                        <div class="form-text">يرجى إرفاق رابط مستودع GitHub للمشروع</div>
+                    </div>
+                </div>
+                
+                <!-- رفع الصور -->
+                <div class="form-section">
+                    <h3 class="section-title">صور المشروع</h3>
+                    
+                    <div class="file-upload-container mb-4">
+                        <div class="file-upload-icon">
+                            <i class="bi bi-cloud-arrow-up"></i>
+                        </div>
+                        <h5>اسحب وأفلت الصور هنا أو انقر للاختيار</h5>
+                        <p class="file-info">يمكنك رفع من 3 إلى 10 صور للمشروع. الصيغ المسموح بها: JPG, PNG, GIF</p>
+                        <input type="file" class="form-control d-none" id="projectImages" multiple accept="image/*">
+                        <button type="button" class="btn btn-custom mt-3" onclick="document.getElementById('projectImages').click()">اختر الصور</button>
+                    </div>
+                    
+                    <div class="row" id="imagePreviewContainer">
+                        <!-- سيتم عرض معاينة الصور هنا -->
+                    </div>
+                    
+                    <div class="char-counter mt-3">
+                        <span id="imagesCounter">0</span>/10 صور
+                    </div>
+                </div>
+                
+                <!-- أزرار التحكم -->
+                <div class="d-flex justify-content-between mt-5">
+                    <button type="button" class="btn btn-secondary-custom" onclick="window.location.href='/'">
+                        الرجوع إلى الرئيسية
+                    </button>
+                    
+                    <button type="submit" class="btn btn-custom">
+                        نشر المشروع
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer id="footer" class="bg-body-secondary">
+        <nav class="navbar justify-content-center px-5">
+            <h1 class="fs-5 text-center">جميع الحقوق محفوظة لدى منصة طيبتي ويب © <span id="currentYear"></span></h1>
+        </nav>
+    </footer>
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // تحديث السنة الحالية في الفوتر
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // عدادات الأحرف
+        const publisherNameInput = document.getElementById('publisherName');
+        const publisherNameCounter = document.getElementById('publisherNameCounter');
+        
+        const projectTitleInput = document.getElementById('projectTitle');
+        const projectTitleCounter = document.getElementById('projectTitleCounter');
+        
+        const projectDescriptionInput = document.getElementById('projectDescription');
+        const projectDescriptionCounter = document.getElementById('projectDescriptionCounter');
+        
+        const technologiesSelect = document.getElementById('technologies');
+        const technologiesCounter = document.getElementById('technologiesCounter');
+        
+        const projectImagesInput = document.getElementById('projectImages');
+        const imagesCounter = document.getElementById('imagesCounter');
+        const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+        
+        // تحديث عداد الاسم
+        publisherNameInput.addEventListener('input', function() {
+            const count = this.value.length;
+            publisherNameCounter.textContent = count;
+            
+            if (count > 30) {
+                publisherNameCounter.classList.add('invalid');
+                this.value = this.value.substring(0, 30);
+                publisherNameCounter.textContent = 30;
+            } else {
+                publisherNameCounter.classList.remove('invalid');
+            }
+        });
+        
+        // تحديث عداد عنوان المشروع
+        projectTitleInput.addEventListener('input', function() {
+            const count = this.value.length;
+            projectTitleCounter.textContent = count;
+            
+            if (count > 30) {
+                projectTitleCounter.classList.add('invalid');
+                this.value = this.value.substring(0, 30);
+                projectTitleCounter.textContent = 30;
+            } else {
+                projectTitleCounter.classList.remove('invalid');
+            }
+        });
+        
+        // تحديث عداد وصف المشروع
+        projectDescriptionInput.addEventListener('input', function() {
+            const count = this.value.length;
+            projectDescriptionCounter.textContent = count;
+            
+            if (count > 200) {
+                projectDescriptionCounter.classList.add('invalid');
+                this.value = this.value.substring(0, 200);
+                projectDescriptionCounter.textContent = 200;
+            } else {
+                projectDescriptionCounter.classList.remove('invalid');
+            }
+        });
+        
+        // تحديث عداد التقنيات
+        technologiesSelect.addEventListener('change', function() {
+            const selectedCount = Array.from(this.selectedOptions).length;
+            technologiesCounter.textContent = selectedCount;
+            
+            if (selectedCount > 6) {
+                technologiesCounter.classList.add('invalid');
+                // إلغاء اختيار التقنيات الزائدة
+                const selectedOptions = Array.from(this.selectedOptions);
+                for (let i = 6; i < selectedOptions.length; i++) {
+                    selectedOptions[i].selected = false;
+                }
+                technologiesCounter.textContent = 6;
+            } else {
+                technologiesCounter.classList.remove('invalid');
+            }
+        });
+        
+        // معالجة رفع الصور
+        projectImagesInput.addEventListener('change', function() {
+            const files = this.files;
+            const fileCount = files.length;
+            imagesCounter.textContent = fileCount;
+            
+            if (fileCount > 10) {
+                imagesCounter.classList.add('invalid');
+                alert('يمكنك رفع 10 صور كحد أقصى. سيتم اختيار أول 10 صور فقط.');
+                // تقليل الملفات إلى 10 فقط
+                const dt = new DataTransfer();
+                for (let i = 0; i < 10; i++) {
+                    dt.items.add(files[i]);
+                }
+                this.files = dt.files;
+                imagesCounter.textContent = 10;
+            } else if (fileCount < 3) {
+                imagesCounter.classList.add('invalid');
+            } else {
+                imagesCounter.classList.remove('invalid');
+            }
+            
+            // عرض معاينة الصور
+            imagePreviewContainer.innerHTML = '';
+            
+            for (let i = 0; i < Math.min(files.length, 10); i++) {
+                const file = files[i];
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const col = document.createElement('div');
+                    col.className = 'col-md-3 col-sm-4 col-6 mb-3';
+                    
+                    col.innerHTML = `
+                        <div class="card">
+                            <img src="${e.target.result}" class="card-img-top" style="height: 150px; object-fit: cover;" alt="معاينة الصورة ${i+1}">
+                            <div class="card-body p-2 text-center">
+                                <small class="text-muted">الصورة ${i+1}</small>
+                            </div>
+                        </div>
+                    `;
+                    
+                    imagePreviewContainer.appendChild(col);
+                };
+                
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // التحقق من صحة النموذج قبل الإرسال
+        document.getElementById('projectForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // التحقق من الاسم الثلاثي
+            const publisherName = publisherNameInput.value.trim();
+            const nameWords = publisherName.split(' ').filter(word => word.length > 0);
+            
+            if (nameWords.length < 3) {
+                alert('يرجى إدخال الاسم الثلاثي (اسم + اسم الأب + اسم الجد)');
+                publisherNameInput.focus();
+                return;
+            }
+            
+            // التحقق من وصف المشروع
+            const description = projectDescriptionInput.value.trim();
+            if (description.length < 50) {
+                alert('وصف المشروع يجب أن لا يقل عن 50 حرفاً');
+                projectDescriptionInput.focus();
+                return;
+            }
+            
+            // التحقق من التقنيات
+            const selectedTechnologies = Array.from(technologiesSelect.selectedOptions);
+            if (selectedTechnologies.length === 0) {
+                alert('يرجى اختيار تقنية واحدة على الأقل للمشروع');
+                technologiesSelect.focus();
+                return;
+            }
+            
+            // التحقق من عدد الصور
+            const imageCount = projectImagesInput.files.length;
+            if (imageCount < 3) {
+                alert('يرجى رفع 3 صور على الأقل للمشروع');
+                return;
+            }
+            
+            // إذا وصلنا إلى هنا، النموذج صالح
+            alert('تم إرسال المشروع بنجاح! سيتم مراجعته ونشره قريباً.');
+            // هنا يمكنك إضافة كود إرسال البيانات إلى الخادم
+            
+            // إعادة توجيه المستخدم بعد الإرسال الناجح
+            // window.location.href = '/index.html';
+        });
+        
+        // إظهار/إخفاء حقل رابط المشروع بناءً على حالة المشروع
+        const projectStatus = document.getElementById('projectStatus');
+        const projectUrlField = document.getElementById('projectUrl').closest('.mb-3');
+        
+        projectStatus.addEventListener('change', function() {
+            if (this.value === 'completed') {
+                projectUrlField.style.display = 'block';
+            } else {
+                projectUrlField.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

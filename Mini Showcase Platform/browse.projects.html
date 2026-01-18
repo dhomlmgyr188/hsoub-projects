@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>منصة طيبتي ويب | تصفح المشاريع</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        #header {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .nav-link {
+            color: #333;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+        
+        #browse-projects {
+            padding: 40px 0;
+            min-height: calc(100vh - 150px);
+        }
+        
+        #browse-projects h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        /* فلتر البحث */
+        .search-filter {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .filter-title {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        /* بطاقة المشروع */
+        .project-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-image {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        .project-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        
+        .status-completed {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .status-inprogress {
+            background-color: #ffc107;
+            color: #212529;
+        }
+        
+        .status-planned {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .project-title {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            min-height: 60px;
+        }
+        
+        .project-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            min-height: 80px;
+            line-height: 1.6;
+        }
+        
+        .project-publisher {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .project-publisher i {
+            color: var(--secondary-color);
+            margin-left: 5px;
+        }
+        
+        .technologies-container {
+            margin: 15px 0;
+            min-height: 40px;
+        }
+        
+        .tech-badge {
+            background-color: #e9ecef;
+            color: #495057;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-left: 5px;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+        
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .project-type {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        
+        .project-focus {
+            background-color: rgba(76, 201, 240, 0.1);
+            color: var(--accent-color);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        
+        .project-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-view {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .btn-view:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-details {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .btn-details:hover {
+            background-color: #3aafd9;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-github {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+        }
+        
+        .btn-github:hover {
+            background-color: #000;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* التصفح والتقسيم */
+        .pagination-container {
+            margin-top: 40px;
+        }
+        
+        .page-link {
+            color: var(--primary-color);
+            border: 1px solid #dee2e6;
+        }
+        
+        .page-link:hover {
+            color: white;
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .page-item.active .page-link {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .results-count {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        /* لا توجد نتائج */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .no-results i {
+            font-size: 4rem;
+            color: #dee2e6;
+            margin-bottom: 20px;
+        }
+        
+        .no-results h3 {
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+        
+        #footer {
+            padding: 20px 0;
+            margin-top: 40px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .project-card {
+                margin-bottom: 25px;
+            }
+            
+            .project-title {
+                min-height: auto;
+            }
+            
+            .project-description {
+                min-height: auto;
+            }
+            
+            .project-actions {
+                flex-direction: column;
+            }
+            
+            .btn-view, .btn-details, .btn-github {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header" class="bg-body-secondary">
+        <nav class="navbar navbar-expand-lg px-5">
+            <div class="container-fluid">
+              <a class="navbar-brand fs-2" href="./index.html">طيبتي ويب</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active fs-4" aria-current="page" href="./index.html">الرئيسية</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link fs-4" href="./new-project.html">مشروع جديد</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link fs-4" href="./browse.projects.html">تصفح المشاريع</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>    
+    </header>
+
+    <section id="browse-projects" class="bg-body-tertiary">
+        <div class="container">
+            <h1 class="mb-4">تصفح المشاريع</h1>
+            
+            <!-- قسم البحث والتصفية -->
+            <div class="search-filter">
+                <div class="row">
+                    <div class="col-lg-8 mb-3">
+                        <div class="filter-title">بحث في المشاريع</div>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="ابحث عن مشروع، تقنية، أو ناشر..." id="searchInput">
+                            <button class="btn btn-primary" type="button" id="searchButton">
+                                <i class="bi bi-search"></i> بحث
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-3">
+                        <div class="filter-title">تصفية حسب النوع</div>
+                        <select class="form-select" id="filterType">
+                            <option value="all">جميع المشاريع</option>
+                            <option value="portfolio">بورتوفوليو</option>
+                            <option value="company">موقع شركة</option>
+                            <option value="ecommerce">متجر إلكتروني</option>
+                            <option value="blog">مدونة/موقع محتوى</option>
+                            <option value="application">تطبيق ويب</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="row mt-3">
+                    <div class="col-md-4 mb-3">
+                        <div class="filter-title">تصفية حسب التقنية</div>
+                        <select class="form-select" id="filterTech">
+                            <option value="all">جميع التقنيات</option>
+                            <option value="react">React</option>
+                            <option value="vue">Vue.js</option>
+                            <option value="angular">Angular</option>
+                            <option value="laravel">Laravel</option>
+                            <option value="nodejs">Node.js</option>
+                            <option value="django">Django</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="filter-title">تصفية حسب التركيز</div>
+                        <select class="form-select" id="filterFocus">
+                            <option value="all">جميع الأنواع</option>
+                            <option value="frontend">فرونت إند</option>
+                            <option value="backend">باك إند</option>
+                            <option value="fullstack">فول ستاك</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="filter-title">تصفية حسب الحالة</div>
+                        <select class="form-select" id="filterStatus">
+                            <option value="all">جميع الحالات</option>
+                            <option value="completed">مكتمل</option>
+                            <option value="inprogress">قيد التطوير</option>
+                            <option value="planned">مخطط له</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- عدد النتائج -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="mb-0">عرض المشاريع</h5>
+                <div class="results-count">
+                    عرض <span id="currentResults">12</span> من <span id="totalResults">45</span> مشروع
+                </div>
+            </div>
+            
+            <!-- قائمة المشاريع -->
+            <div class="row" id="projectsContainer">
+                <!-- سيتم إضافة المشاريع ديناميكياً -->
+            </div>
+            
+            <!-- رسالة عدم وجود نتائج -->
+            <div class="no-results d-none" id="noResults">
+                <i class="bi bi-inbox"></i>
+                <h3>لا توجد مشاريع مطابقة لبحثك</h3>
+                <p class="text-muted">حاول تغيير كلمات البحث أو إزالة بعض الفلاتر</p>
+                <button class="btn btn-primary mt-3" id="resetFilters">إعادة تعيين الفلاتر</button>
+            </div>
+            
+            <!-- التصفح -->
+            <div class="pagination-container">
+                <nav aria-label="تصفح المشاريع">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">السابق</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">التالي</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer" class="bg-body-secondary">
+        <nav class="navbar justify-content-center px-5">
+            <h1 class="fs-5 text-center">جميع الحقوق محفوظة لدى منصة طيبتي ويب © <span id="currentYear"></span></h1>
+        </nav>
+    </footer>
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // تحديث السنة الحالية
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // بيانات المشاريع الوهمية
+        const mockProjects = [
+            {
+                id: 1,
+                title: "موقع شركة تصميم إبداعي",
+                description: "موقع متكامل لشركة متخصصة في التصميم الجرافيكي والويب، يحتوي على معرض أعمال ونموذج تواصل.",
+                publisher: "أحمد محمد العلي",
+                technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+                type: "company",
+                typeText: "موقع شركة",
+                focus: "frontend",
+                focusText: "فرونت إند",
+                status: "completed",
+                statusText: "مكتمل",
+                workType: "individual",
+                projectUrl: "https://example.com",
+                githubUrl: "https://github.com/ahmed/design-company",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                detailsUrl: "./project.details.html?id=1"
+            },
+            {
+                id: 2,
+                title: "متجر إلكتروني للمنتجات التقنية",
+                description: "منصة تسوق إلكتروني متكاملة تتيح للمستخدمين شراء أحدث المنتجات التقنية مع نظام دفع آمن.",
+                publisher: "سارة خالد الحربي",
+                technologies: ["React", "Node.js", "Express", "MongoDB", "Stripe"],
+                type: "ecommerce",
+                typeText: "متجر إلكتروني",
+                focus: "fullstack",
+                focusText: "فول ستاك",
+                status: "completed",
+                statusText: "مكتمل",
+                workType: "team",
+                projectUrl: "https://techstore.example.com",
+                githubUrl: "https://github.com/sara/tech-ecommerce",
+                image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                detailsUrl: "./project.details.html?id=2"
+            },
+            {
+                id: 3,
+                title: "بورتوفوليو مصمم ويب",
+                description: "موقع شخصي يعرض مهارات وأعمال مصمم ويب محترف مع تفاصيل التواصل والخدمات المقدمة.",
+                publisher: "محمد عبدالله القحطاني",
+                technologies: ["HTML", "CSS", "JavaScript", "GSAP"],
+                type: "portfolio",
+                typeText: "بورتوفوليو",
+                focus: "frontend",
+                focusText: "فرونت إند",
+                status: "completed",
+                statusText: "مكتمل",
+                workType: "individual",
+                projectUrl: "https://portfolio.example.com",
+                githubUrl: "https://github.com/mohammed/web-portfolio",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                detailsUrl: "./project.details.html?id=1"
+            },
+            {
+                id: 4,
+                title: "منصة مدونات تفاعلية",
+                description: "منصة تتيح للمستخدمين كتابة ونشر المقالات مع نظام تعليقات وتقييمات تفاعلي.",
+                publisher: "فاطمة ناصر الرشيد",
+                technologies: ["Vue.js", "Laravel", "MySQL"],
+                type: "blog",
+                typeText: "مدونة/موقع محتوى",
+                focus: "fullstack",
+                focusText: "فول ستاك",
+                status: "inprogress",
+                statusText: "قيد التطوير",
+                workType: "team",
+                projectUrl: "",
+                githubUrl: "https://github.com/fatima/blog-platform",
+                image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                detailsUrl: "./project.details.html?id=1"
+            },
+            {
+                id: 5,
+                title: "تطبيق إدارة المهام",
+                description: "تطبيق ويب لإدارة المهام الشخصية والفريقية مع إشعارات وميزة المزامنة بين الأجهزة.",
+                publisher: "خالد سعيد الغامدي",
+                technologies: ["React", "Redux", "Firebase"],
+                type: "application",
+                typeText: "تطبيق ويب",
+                focus: "frontend",
+                focusText: "فرونت إند",
+                status: "completed",
+                statusText: "مكتمل",
+                workType: "individual",
+                projectUrl: "https://tasks.example.com",
+                githubUrl: "https://github.com/khalid/task-manager",
+                image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                detailsUrl: "./project.details.html?id=1"
+            },
+            {
+                id: 6,
+                title: "نظام حجوزات مطعم",
+                description: "نظام إلكتروني لحجز مواعيد في المطاعم مع إدارة القوائم وتقييمات العملاء.",
+                publisher: "نورة عبدالعزيز السليم",
+                technologies: ["Angular", "Node.js", "MongoDB", "Socket.io"],
+                type: "application",
+                typeText: "تطبيق ويب",
+                focus: "fullstack",
+                focusText: "فول ستاك",
+                status: "completed",
+                statusText: "مكتمل",
+                workType: "team",
+                projectUrl: "https://restaurant.example.com",
+                githubUrl: "https://github.com/nora/restaurant-booking",
+                image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                detailsUrl: "./project.details.html?id=1"
+            },
+            {
+                id: 7,
+                title: "لوحة تحكم إحصائية",
+                description: "لوحة تحكم تفاعلية تعرض الإحصائيات والبيانات في شكل رسوم بيانية وتقارير مفصلة.",
+                publisher: "عمر راشد المطيري",
+                technologies: ["React", "Chart.js", "D3.js", "Express"],
+                type: "dashboard",
+                typeText: "لوحة تحكم",
+                focus: "frontend",
+                focusText: "فرونت إند",
+                status: "inprogress",
+                statusText: "قيد التطوير",
+                workType: "individual",
+                projectUrl: "",
+                githubUrl: "https://github.com/omar/dashboard-stats",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                detailsUrl: "./project.details.html?id=1"
+            },
+            {
+                id: 8,
+                title: "منصة تعليمية عن بعد",
+                description: "منصة متكاملة للتعليم الإلكتروني تحتوي على فصول افتراضية واختبارات تفاعلية.",
+                publisher: "لينا وليد الفهد",
+                technologies: ["Vue.js", "Laravel", "WebRTC", "MySQL"],
+                type: "application",
+                typeText: "تطبيق ويب",
+                focus: "fullstack",
+                focusText: "فول ستاك",
+                status: "planned",
+                statusText: "مخطط له",
+                workType: "team",
+                projectUrl: "",
+                githubUrl: "https://github.com/lena/elearning-platform",
+                image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                detailsUrl: "./project.details.html?id=1"
+            },
+            {
+                id: 9,
+                title: "موقع وكالة سفر وسياحة",
+                description: "موقع احترافي لوكالة سفر تقدم عروض وحزم سياحية مع نظام حجز مباشر.",
+                publisher: "تركي محمد الشمري",
+                technologies: ["HTML", "CSS", "JavaScript", "PHP"],
+                type: "company",
+                typeText: "موقع شركة",
+                focus: "backend",
+                focusText: "باك إند",
+                status: "completed",
+                statusText: "مكتمل",
+                workType: "individual",
+                projectUrl: "https://travel.example.com",
+                githubUrl: "https://github.com/turki/travel-agency",
+                image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                detailsUrl: "./project.details.html?id=1"
+            },
+            {
+                id: 10,
+                title: "بورتوفوليو مصور فوتوغرافي",
+                description: "معرض أعمال مصور محترف يعرض أفضل اللقطات مع معلومات التواصل وطلب الخدمات.",
+                publisher: "ريم عبدالرحمن الزهراني",
+                technologies: ["HTML", "CSS", "JavaScript", "Lightbox"],
+                type: "portfolio",
+                typeText: "بورتوفوليو",
+                focus: "frontend",
+                focusText: "فرونت إند",
+                status: "completed",
+                statusText: "مكتمل",
+                workType: "individual",
+                projectUrl: "https://photography.example.com",
+                githubUrl: "https://github.com/reem/photography-portfolio",
+                image: "https://images.unsplash.com/photo-1554048612-b6a482bc67e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                detailsUrl: "./project.details.html?id=1"
+            },
+            {
+                id: 11,
+                title: "منصة عقارية ذكية",
+                description: "منصة متقدمة للعقارات تتيح البحث عن العقارات مع خريطة تفاعلية وتقييمات.",
+                publisher: "بدر ناصر القصير",
+                technologies: ["React", "Leaflet", "Node.js", "PostgreSQL"],
+                type: "application",
+                typeText: "تطبيق ويب",
+                focus: "fullstack",
+                focusText: "فول ستاك",
+                status: "inprogress",
+                statusText: "قيد التطوير",
+                workType: "team",
+                projectUrl: "",
+                githubUrl: "https://github.com/badr/real-estate-platform",
+                image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                detailsUrl: "./project.details.html?id=11"
+            },
+            {
+                id: 12,
+                title: "متجر إلكتروني للأزياء",
+                description: "منصة تسوق للأزياء والمجوهرات مع عرض المنتجات بطريقة تفاعلية ونظام توصيل.",
+                publisher: "جواهر فيصل العتيبي",
+                technologies: ["Vue.js", "Laravel", "MySQL", "PayPal"],
+                type: "ecommerce",
+                typeText: "متجر إلكتروني",
+                focus: "fullstack",
+                focusText: "فول ستاك",
+                status: "completed",
+                statusText: "مكتمل",
+                workType: "team",
+                projectUrl: "https://fashion.example.com",
+                githubUrl: "https://github.com/jawaher/fashion-store",
+                image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                detailsUrl: "./project.details.html?id=12"
+            }
+        ];
+        
+        // عرض المشاريع
+        function displayProjects(projects) {
+            const container = document.getElementById('projectsContainer');
+            container.innerHTML = '';
+            
+            if (projects.length === 0) {
+                document.getElementById('noResults').classList.remove('d-none');
+                document.getElementById('currentResults').textContent = '0';
+                return;
+            }
+            
+            document.getElementById('noResults').classList.add('d-none');
+            document.getElementById('currentResults').textContent = projects.length;
+            
+            projects.forEach(project => {
+                const col = document.createElement('div');
+                col.className = 'col-lg-4 col-md-6 mb-4';
+                
+                // تحديد لون حالة المشروع
+                let statusClass = '';
+                if (project.status === 'completed') statusClass = 'status-completed';
+                else if (project.status === 'inprogress') statusClass = 'status-inprogress';
+                else statusClass = 'status-planned';
+                
+                col.innerHTML = `
+                    <div class="project-card card">
+                        <div class="position-relative">
+                            <img src="${project.image}" class="project-image" alt="${project.title}">
+                            <span class="project-badge ${statusClass}">${project.statusText}</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="project-title">${project.title}</h5>
+                            <p class="project-description">${project.description}</p>
+                            
+                            <div class="project-publisher">
+                                <i class="bi bi-person-circle"></i> ${project.publisher}
+                            </div>
+                            
+                            <div class="technologies-container">
+                                ${project.technologies.map(tech => `<span class="tech-badge">${tech}</span>`).join('')}
+                            </div>
+                            
+                            <div class="project-meta">
+                                <span class="project-type">${project.typeText}</span>
+                                <span class="project-focus">${project.focusText}</span>
+                            </div>
+                            
+                            <div class="project-actions">
+                                ${project.projectUrl ? 
+                                    `<a href="${project.projectUrl}" target="_blank" class="btn-view">
+                                        <i class="bi bi-eye"></i> عرض المشروع
+                                    </a>` : 
+                                    `<button class="btn-view" disabled>
+                                        <i class="bi bi-clock"></i> قيد التطوير
+                                    </button>`
+                                }
+                                <a href="${project.detailsUrl}" class="btn-details">
+                                    <i class="bi bi-info-circle"></i> التفاصيل
+                                </a>
+                                <a href="${project.githubUrl}" target="_blank" class="btn-github">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(col);
+            });
+        }
+        
+        // فلترة المشاريع
+        function filterProjects() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const typeFilter = document.getElementById('filterType').value;
+            const techFilter = document.getElementById('filterTech').value;
+            const focusFilter = document.getElementById('filterFocus').value;
+            const statusFilter = document.getElementById('filterStatus').value;
+            
+            const filtered = mockProjects.filter(project => {
+                // البحث النصي
+                const matchesSearch = searchTerm === '' || 
+                    project.title.toLowerCase().includes(searchTerm) ||
+                    project.description.toLowerCase().includes(searchTerm) ||
+                    project.publisher.toLowerCase().includes(searchTerm) ||
+                    project.technologies.some(tech => tech.toLowerCase().includes(searchTerm));
+                
+                // فلترة النوع
+                const matchesType = typeFilter === 'all' || project.type === typeFilter;
+                
+                // فلترة التقنية
+                const matchesTech = techFilter === 'all' || project.technologies.some(tech => 
+                    tech.toLowerCase().includes(techFilter.toLowerCase()));
+                
+                // فلترة التركيز
+                const matchesFocus = focusFilter === 'all' || project.focus === focusFilter;
+                
+                // فلترة الحالة
+                const matchesStatus = statusFilter === 'all' || project.status === statusFilter;
+                
+                return matchesSearch && matchesType && matchesTech && matchesFocus && matchesStatus;
+            });
+            
+            displayProjects(filtered);
+        }
+        
+        // تهيئة الأحداث
+        document.getElementById('searchInput').addEventListener('input', filterProjects);
+        document.getElementById('filterType').addEventListener('change', filterProjects);
+        document.getElementById('filterTech').addEventListener('change', filterProjects);
+        document.getElementById('filterFocus').addEventListener('change', filterProjects);
+        document.getElementById('filterStatus').addEventListener('change', filterProjects);
+        document.getElementById('searchButton').addEventListener('click', filterProjects);
+        
+        // إعادة تعيين الفلاتر
+        document.getElementById('resetFilters').addEventListener('click', function() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('filterType').value = 'all';
+            document.getElementById('filterTech').value = 'all';
+            document.getElementById('filterFocus').value = 'all';
+            document.getElementById('filterStatus').value = 'all';
+            filterProjects();
+        });
+        
+        // عرض المشاريع عند التحميل
+        displayProjects(mockProjects);
+        document.getElementById('totalResults').textContent = mockProjects.length;
+    </script>
+</body>
+</html>
