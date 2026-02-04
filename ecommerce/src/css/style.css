@@ -27,6 +27,15 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
 body{
     font-family: "apercuArabicPro", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.5;
@@ -58,6 +67,7 @@ body{
     padding: 6px 16px 7px;
     transition: 0.3s ease;
 }
+
 .custom-form-control:focus{
     border-color: #002e69;
     box-shadow: 0 0 1px 0 #004AAD;
@@ -309,9 +319,9 @@ body{
 
 .add-to-cart-btn{
     border: 1px solid transparent;
-background-color: #004AAD;
-color: #fff;
-font-weight: 700;
+    background-color: #004AAD;
+    color: #fff;
+    font-weight: 700;
 }
 .custom-thumbnail .sale{
     position: absolute;
@@ -639,7 +649,17 @@ font-weight: 700;
 /* نهاية تنسيقات صفحة عربة الشراء */
 
 
-
+/* بداية تنسيقات صفحة الدفع */
+.custom-form-details{
+    border-width: 2px;
+    border-radius: 3px;
+    width: 98%;
+    font-size: 18px;
+    color: #303030;
+    padding: 0 15px;
+    height: 45px !important;
+}
+/* نهاية تنسيقات صفحة الدفع */
 
 
 

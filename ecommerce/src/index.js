@@ -73,6 +73,66 @@ function calculateTotalPrice(){
 // نهاية شيفرة لحساب اجمالي جميع المنتجات تم استدعائها مرتين
 
 
+// بداية شيفرة تحديد المدينة عند تغيير البلد تلقائيا
+
+const citiesByCountry = {
+    sa: ['المدينة المنورة','جدة','الرياض'],
+    eg: ['القاهرة','الإسكندرية','دمياط','شرم الشيخ','أسيوط'],
+    jo: ['عمان','الزرقاء'],
+    sy: ['حمص','دمشق','حلب','حماة']
+}
+
+document.querySelectorAll('select[name="country"]').forEach(item => {
+    item.addEventListener('change', () => {
+        const country = item.value
+
+        const cities = citiesByCountry[country]
+
+        document.querySelectorAll('#paymentcities option').forEach(i => i.remove())
+
+        const firstOption = document.createElement('option')
+        const optionText = document.createTextNode('اختر مدينة')
+        firstOption.appendChild(optionText)
+        firstOption.setAttribute('value', '')
+        firstOption.setAttribute('selected', 'true')
+        firstOption.setAttribute('disabled', 'true')
+
+        const city_options = document.getElementById('paymentcities')
+        city_options.appendChild(firstOption)
+
+        cities.forEach(city => {
+            const newOption = document.createElement('option')
+            const optionText = document.createTextNode(city)
+            newOption.appendChild(optionText)
+            newOption.setAttribute('value', city)
+            city_options.appendChild(newOption)
+        })
+    })
+})
+// نهاية شيفرة تحديد المدينة عند تغيير البلد تلقائيا
+
+// بداية شيفرة اخفاء واظهار طرق الدفع المتاحة 
+document.querySelectorAll('#form-checkout input[name="payment-method"]').forEach(item => {
+    item.addEventListener('change', () => {
+        const paymentMethod = item.value
+
+        const creditCardInputs = document.querySelectorAll('#credit-card-info')
+
+        if(paymentMethod === 'on-delivery'){
+            creditCardInputs.forEach(input => {
+                input.style.display='none'
+            })
+        }
+        else{
+            creditCardInputs.forEach(input => {
+                input.style.display='flex'
+            })
+        }
+    })
+})
+// نهاية شيفرة اخفاء واظهار طرق الدفع المتاحة 
+
+
 // بداية شيفرة اضافة سنة حقوق الطبع والنشر في الفوتر 
 document.getElementById("copyright").innerHTML = "جميع الحقوق محفوظة سنة " + new Date().getFullYear()
 // نهاية شيفرة اضافة سنة حقوق الطبع والنشر في الفوتر 
