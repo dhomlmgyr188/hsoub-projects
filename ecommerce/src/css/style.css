@@ -271,8 +271,11 @@ body{
     padding: 8px;
     cursor: pointer;
     transition: 0.3s ease;
+}
+.carousel-item .custom-thumbnail{
     margin-bottom: 70px;
 }
+
 .custom-thumbnail:hover{
     border-color: #002e69;
 }
@@ -432,7 +435,7 @@ font-weight: 700;
 .newsletter form input:focus{
     background-color: rgb(76, 94, 94);
 }
-.newsletter form .custom-btn-warning{
+.custom-btn-warning{
     background-color: #004AAD;
     color: #fff;
     transition: all 0.2s ease;
@@ -469,12 +472,197 @@ font-weight: 700;
 
 /* نهاية تنسيقات التذييل */
 
+
+
+
+/* بداية تنسيقات صفحة المنتج */
+.custom-breadcrumb{
+    padding: 20px 0;
+}
+.custom-breadcrumb a{
+    color: #303030;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+.custom-breadcrumb a:hover{
+    color: #004AAD;
+}
+.custom-breadcrumb>li::before{
+    color: #002e69 !important;
+}
+
+#carousel-product-images .custom-carousel-indicators{
+    position: absolute;
+    top: 92%;
+    right: 0;
+}
+#carousel-product-images .carousel-item img{
+    width: 100%;
+    height: auto;
+}
+
+.product-category{
+    color: #777;
+}
+#form-product-selection h3{
+    font-size: 28px;
+    font-weight: 700;
+}
+.price.large{
+    font-size: 28px;
+}
+.borders-between>div+div{
+    border-top: 1px solid #dfdfdf;
+    padding: 15px 0;
+}
+.custom-size-and-color{
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    color: #777;
+    border: 1px solid #dfdfdf;
+    text-align: center;
+    margin: 10px 5px;
+    font-weight: 700;
+}
+.custom-size-and-color.active{
+    color: #004AAD;
+    border-color: #004AAD;
+}
+.custom-size-and-color.custom-color.active{
+    border-color:#fff;
+    outline: #004AAD solid 1px;
+}
+.size-and-color input[type="radio"]{
+    display: none;
+}
+.product-quantity select{
+    height: 34px !important;
+    padding: 6px 12px;
+    margin-right: 5px;
+}
+
+.custom-btn-with-icon{
+    padding: 5px 10px;
+    margin: 15px 0;
+    font-size: 18px;
+}
+
+.heading-border-bottom{
+    border-bottom: 1px solid #dfdfdf;
+    padding-bottom: 15px;
+}
+
+.heading-inline{
+    display: inline-block;
+    min-width: 250px;
+}
+
+.more-description p,
+.more-description ul{
+    margin-bottom: 10px;
+}
+
+.comments .comment img{
+    width: 80px;
+    height: 80px;
+    margin-left: 15px;
+    border: 1px solid #d1d1d1;
+}
+.comments .comment h4{
+    font-size: 22px;
+    font-weight: 700;
+}
+/* نهاية تنسيقات صفحة المنتج */
+
+
+
+/* بداية تنسيقات صفحة عربة الشراء */
+.custom-heading{
+    font-size: 38px;
+    margin-bottom: 25px;
+    font-weight: normal;
+}
+.custom-btn-danger{
+    background-color: transparent;
+    border-color: #e2004b;
+    color: #e2004b;
+}
+.custom-btn-danger:hover,
+.custom-btn-danger:active,
+.custom-btn-danger:focus,
+.custom-btn-danger:active:focus,
+.custom-btn-danger:active:hover{
+    border-color: #ad003a;
+    color: #ad003a;
+}
+#form-checkout tfoot td{
+    border-bottom: none;
+    font-size: 150%;
+    font-weight: normal;
+}
+
+#total-price-for-all-product{
+    color: #303030;
+    font-weight: 700;
+}
+.custom-table th,
+.custom-table td{
+    border-top: 1px solid #d1d1d1;
+    border-bottom: 1px solid #d1d1d1;
+    padding: 15px;
+    vertical-align: center;
+}
+.custom-table th{
+    color: #777;
+    font-weight: normal;
+}
+.custom-table th:first-child,
+.custom-table td:first-child{
+    width: 50%;
+}
+.custom-table th:not(:first-child),
+.custom-table td:not(:first-child){
+    text-align: center;
+}
+.custom-table .custom-media img{
+    width: 80px;
+    height: 80px;
+    margin-left: 15px;
+    border: 1px solid #d1d1d1;
+}
+
+.custom-media h4{
+    font-size: 18px;
+    margin: 10px 0;
+}
+/* نهاية تنسيقات صفحة عربة الشراء */
+
+
+
+
+
+
 /* بداية تجاوبية الصفحات */
 @media (max-width: 1399.98px) {
 }
 @media (max-width: 1199.98px) {
+    .custom-size-and-color{
+        width: 30px;
+    }
 }
 @media (max-width: 991.98px) {
+    .custom-size-and-color{
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        margin: 10px;
+    }
+
+    .product-images-responsive{
+        margin-bottom: 80px;
+    }
+
     #row-brand .carousel-inner img{
         width: 200px !important;
         height: 200px !important;
@@ -542,8 +730,15 @@ font-weight: 700;
     }
 }
 @media (max-width: 767.98px) {
+    .hide-total-price-in-small-devices{
+        display: none;
+    }
     #carousel-most-sold-alternative .carousel-item img{
         margin: auto;
+    }
+
+    .custom-thumbnail{
+    margin-bottom: 40px;
     }
 
     .custom-thumbnail img{
@@ -601,6 +796,10 @@ font-weight: 700;
     }
     .custom-nav-form .custom-form-control{
         width: 80% !important;
+    }
+    #form-product-selection,
+    .comments{
+        padding-right: 15px;
     }
 }
 /* نهاية تجاوبية الصفحات */
