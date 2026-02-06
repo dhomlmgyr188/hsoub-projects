@@ -62,7 +62,8 @@ body{
 .navbar-header>a>img{
     height: 50px;
 }
-.custom-form-control, .dropdown a.custom-btn{
+.custom-form-control,
+.dropdown a.custom-btn{
     border: 1px solid #dfdfdf;
     box-shadow: none;
     border-radius: 0;
@@ -70,7 +71,7 @@ body{
     padding: 6px 16px 7px;
     transition: 0.3s ease;
 }
-
+.custom-textarea:focus,
 .custom-form-control:focus{
     border-color: #002e69;
     box-shadow: 0 0 1px 0 #004AAD;
@@ -103,6 +104,9 @@ body{
     font-weight: 700;
     transition: 0.3s ease;
 }
+.custom-btn-no-radius:hover,
+.custom-btn-no-radius:active,
+.custom-btn-no-radius:focus,
 .search-btn:hover,
 .search-btn:active,
 .search-btn:focus,
@@ -267,8 +271,8 @@ body{
     border-right: 1px solid #dfdfdf;
 }
 .heading{
-    font-size: 32px;
-    margin-bottom: 25px;
+    font-size: 24px;
+    margin-bottom: 15px;
 }
 /* نهاية تنسيقات قسم مميزات المتجر */
 
@@ -561,11 +565,6 @@ body{
     font-size: 18px;
 }
 
-.heading-border-bottom{
-    border-bottom: 1px solid #dfdfdf;
-    padding-bottom: 15px;
-}
-
 .heading-inline{
     display: inline-block;
     min-width: 250px;
@@ -689,6 +688,7 @@ input[type="radio"]{
     cursor: pointer !important;
 }
 .heading-with-border-bottom{
+    font-size: 24px;
     border-bottom: 1px solid #d1d1d1;
     padding-bottom: 15px;
 }
@@ -717,13 +717,29 @@ input[type="radio"]{
     border-color: #004AAD !important;
 }
 
-
-
-
-
-
-
 /* نهاية تنسيقات صفحة البحث المتقدم */
+
+/* بداية تنسيقات صفحة تواصل معنا */
+.custom-btn-no-radius{
+    border-radius: 0 !important;
+}
+.custom-textarea{
+    border: 1px solid #dfdfdf;
+    box-shadow: none;
+    border-radius: 0;
+    max-height: 110px !important;
+    transition: 0.3s ease;
+}
+.custom-map>*{
+    padding: 0 !important;
+}
+.icons-social{
+    color: #004AAD;
+}
+.custom-contact-information .custom-list-group{
+    border: none;
+}
+/* نهاية تنسيقات صفحة تواصل معنا */
 
 /* بداية تجاوبية الصفحات */
 @media (max-width: 1399.98px) {
@@ -817,6 +833,9 @@ input[type="radio"]{
     }
 }
 @media (max-width: 767.98px) {
+    .custom-contact-information{
+        margin-bottom: 25px;
+    }
     .hide-total-price-in-small-devices{
         display: none;
     }
