@@ -1,3 +1,8 @@
+@use './colors' as *;
+@use './custom_table' as *;
+@use './mixins' as *;
+@use './custom_thumbnail' as *;
+
 @font-face {
     font-family: "apercuArabicPro";
     src: url(../fonts/apercu-arabic-pro/ApercuArabicPro-Regular.eot);
@@ -7,8 +12,8 @@
     font-weight: 400;
     font-style: normal;
     font-display: swap;
-
 }
+
 @font-face {
     font-family: "apercuArabicPro";
     src:
@@ -46,9 +51,9 @@ body{
 
 /* بداية تنسيقات القائمة العلوية */
 .custom-navbar{
-    border-bottom: 1px solid #dfdfdf;
+    border-bottom: 1px solid $color-solid;
     width: 100%;
-    background-color: #fff;
+    background-color: $color-background;
     padding: 15px 0;
 }
 .btn{
@@ -64,7 +69,7 @@ body{
 }
 .custom-form-control,
 .dropdown a.custom-btn{
-    border: 1px solid #dfdfdf;
+    border: 1px solid $color-solid;
     box-shadow: none;
     border-radius: 0;
     height: 38px;
@@ -73,16 +78,16 @@ body{
 }
 .custom-textarea:focus,
 .custom-form-control:focus{
-    border-color: #002e69;
-    box-shadow: 0 0 1px 0 #004AAD;
+    border-color: $color-primary-darken;
+    box-shadow: 0 0 1px 0 $color-primary;
 }
 .dropdown a.custom-btn:hover{
-    background-color: #e4e4e4;
-    border: 1px solid #d1d1d1;
-    color: #004AAD;
+    background-color: $color-primary-hover-lighten;
+    border: 1px solid $color-solid;
+    color: $color-primary;
 }
 .dropdown a.custom-btn:focus{
-    color: #004AAD;
+    color: $color-primary;
 }
 .categories{
     border-right: 0 !important;
@@ -90,13 +95,13 @@ body{
 }
 .custom-dropdown-menu{
     border-radius: 0;
-    box-shadow: 0 2px 5px 0 #dfdfdf;
-    color: #777;
+    box-shadow: 0 2px 5px 0 $color-solid;
+    color: $color-gray;
 }
 .search-btn{
-    border-color: #004AAD;
-    background-color: #004AAD;
-    color: #fff;
+    border-color: $color-primary;
+    background-color: $color-primary;
+    color: $color-background;
     border-radius: 0;
     height: 38px;
     width: 65px;
@@ -104,37 +109,39 @@ body{
     font-weight: 700;
     transition: 0.3s ease;
 }
-
+.custom-btn-no-radius:hover,
+.custom-btn-no-radius:active,
+.custom-btn-no-radius:focus,
 .search-btn:hover,
 .search-btn:active,
 .search-btn:focus,
 .search-btn:active:focus,
 .search-btn:active:hover{
-    border-color: #002e69;
-    background-color: #002e69;
-    color: #fff;
+    border-color: $color-primary-darken;
+    background-color: $color-primary-darken;
+    color: $color-background;
 }
 
 .nav-link{
-    color: #777;
+    color: $color-gray;
     padding: 15px;
 }
 .custom-navbar .navbar-nav li.active a.nav-link{
-    color: #002e69;
+    color: $color-primary-darken;
     font-weight: 700;
-    border-bottom: 1px solid #004AAD;
+    border-bottom: 1px solid $color-primary;
 }
 .custom-navbar .navbar-nav li.active:hover a.nav-link{
-    background-color: #e4e4e4;
+    background-color: $color-primary-hover-lighten;
 }
 
 .custom-dropdown-menu li a:hover{
-    background-color: #d8e9ff;
+    background-color: $color-overly-primary;
 }
 .custom-navbar .btn-icon{
     padding: 5px 10px;
-    color: #777;
-    border: 1px solid #ddd;
+    color: $color-gray;
+    border: 1px solid $color-solid;
     background-color: transparent;
     border-radius: 2px;
     font-size: 14px;
@@ -144,7 +151,7 @@ body{
 
 /* بداية تنسيقات قسم المنتجات المميزة */
 #carouselFeatures{
-    background-color:#f2f9ff;
+    background-color: $color-primary-hover-lighten;
     height: 400px;
     padding-top: 25px;
 }
@@ -154,8 +161,8 @@ body{
 }
 
 #carouselFeatures .product-deatils{
-    border: 1px solid #d1d1d1;
-    background-color: #e7eff5;
+    border: 1px solid $color-solid;
+    background-color: $color-background;
     padding: 20px;
     top: 50px;
     height: 200px;
@@ -168,32 +175,20 @@ body{
 }
 #carouselFeatures .product-category{
     position: absolute;
-    border: 1px solid #d1d1d1;
-    background-color: #e7eff5;
+    border: 1px solid $color-solid;
+    background-color: $color-background;
     padding: 5px 10px;
     top: -15px;
     right: -15px;
 }
 
 .custom-btn-outline-warning{
-    background: transparent;
-    border-color: #004AAD;
-    color: #004AAD;
-    transition: 0.3s ease;
-}
-.custom-btn-outline-warning:hover,
-.custom-btn-outline-warning:active,
-.custom-btn-outline-warning:focus,
-.custom-btn-outline-warning:active:focus,
-.custom-btn-outline-warning:active:hover{
-    background: transparent;
-    border-color: #002e69;
-    color: #002e69;
+    @include button-outline-style($color-primary, transparent);
 }
 
 .sale{
-    background-color:#ad003a;
-    color: #fff;
+    background-color:$color-danger-darken;
+    color: $color-background;
     font-weight: bold;
     position: absolute;
 }
@@ -220,29 +215,29 @@ body{
 .custom-carousel-indicators-primary{
     width: 80px !important;
     height: 80px !important;
-    border: 2px solid #d1d1d1 !important;
-    background-color: #f7faff !important;
+    border: 2px solid $color-solid !important;
+    background-color: $color-background !important;
     margin-left: 10px !important;
     opacity: 1 !important;
 }
 .custom-carousel-indicators-primary.active{
-    border-color: #002e69 !important;
+    border-color: $color-primary-darken !important;
 }
 
 #carouselFeatures .carousel-control-prev .fa-chevron-right,
 #carouselFeatures .carousel-control-next .fa-chevron-left{
     font-size: 36px;
-    color: #004AAD;
+    color: $color-primary;
 }
 
 /* نهاية تنسيقات قسم المنتجات المميزة */
 
 /* بداية تنسيقات قسم مميزات المتجر */
 #store-features{
-    background: #fff;
+    background: $color-background;
     padding-top: 20px;
     padding-bottom: 30px;
-    box-shadow: 0 0 15px #d8e9ff;
+    box-shadow: 0 0 15px $color-overly-primary;
     position: relative;
     top: -30px;
 }
@@ -266,7 +261,7 @@ body{
     margin-bottom: 5px;
 }
 #store-features .feature+.feature{
-    border-right: 1px solid #dfdfdf;
+    border-right: 1px solid $color-solid;
 }
 .heading{
     font-size: 24px;
@@ -275,40 +270,19 @@ body{
 /* نهاية تنسيقات قسم مميزات المتجر */
 
 /* بداية تنسيقات قسم الاكثر مبيعا */
-.custom-thumbnail img{
-    max-height: 250px;
-    width: 100%;
-    max-width: 250px;
-}
-.custom-thumbnail{
-    border: 2px solid #dfdfdf;
-    padding: 8px;
-    margin-bottom: 25px;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-.carousel-item .custom-thumbnail{
-    margin-bottom: 70px;
-}
 
-.custom-thumbnail:hover{
-    border-color: #002e69;
-}
-.custom-thumbnail h4{
-    font-size: 18px;
-}
 .price{
-    color: #004AAD;
+    color: $color-primary;
 }
 .rating{
-    color: #c2c2c2;
+    color: $color-gray;
 }
 .rating .active{
-    color:gold;
+    color: $color-stars;
 }
 .overly{
     position: absolute;
-    background-color: rgba(83, 204, 215, 0.5);
+    background-color: $color-overly-primary;
     height: 250px;
     width: calc(100% - 16px);
     display: flex;
@@ -323,20 +297,9 @@ body{
 }
 
 .add-to-cart-btn{
-    border: 1px solid transparent;
-    background-color: #004AAD;
-    color: #fff;
-    font-weight: 700;
+    @include button-outline-style($color-primary, $color-background);
 }
-.custom-thumbnail .sale{
-    position: absolute;
-    left: 16px;
-    top: 14px;
-    padding: 5px 10px;
-}
-.custom-thumbnail .sale::before{
-    content: "-";
-}
+
 .carousel-indicators{
     bottom: -5px;
 }
@@ -346,11 +309,11 @@ body{
 .custom-carousel-indicators2>li{
     width: 15px !important;
     height: 15px !important;
-    background-color: #70a7ee !important;
+    background-color: $color-primary-hover-lighten !important;
     margin: 5px !important;
 }
 .custom-carousel-indicators2>li.active{
-    background-color: #002e69 !important;
+    background-color: $color-primary-darken !important;
 }
 /* نهاية تنسيقات قسم الاكثر مبيعا */
 
@@ -364,7 +327,7 @@ body{
 }
 
 .panel{
-    border: 2px solid #dfdfdf;
+    border: 2px solid $color-solid;
     border-radius: 5px;
     padding: 20px;
 }
@@ -376,31 +339,31 @@ body{
     margin-top: 0;
 }
 .custom-text-muted{
-    color: #777;
+    color: $color-gray;
 }
 .arrow-btn{
     padding: 5px 10px;
     background-color: fff;
-    color: #777;
-    border: 1px solid #dfdfdf;
+    color: $color-gray;
+    border: 1px solid $color-solid;
     border-radius: 2px;
     font-size: 12px;
 }
 .arrow-btn:hover{
-    border: 1px solid #777;
-    color: #777;
+    border: 1px solid $color-gray;
+    color: $color-gray;
 }
 #row-brand h3.heading{
-    border-top: 1px solid #dfdfdf;
+    border-top: 1px solid $color-solid;
     padding-top: 25px;
 }
 /* نهاية تنسيقات قسم الماركات العالمية */
 
 /* بداية تنسيقات التذييل */
 #brands-logo{
-    background-color:#deebfc;
+    background-color: $color-primary-hover-lighten;
     padding: 25px 0;
-    color: #777;
+    color: $color-gray;
     margin-top: 25px;
 }
 #brands-logo img{
@@ -411,7 +374,7 @@ body{
 #footer-nav{
     position: relative;
     padding: 50px 0 40px;
-    background-color: rgb(22, 32, 32);
+    background-color: $color-footer;
 }
 
 .footer-logo img{
@@ -424,11 +387,11 @@ body{
 .footer-nav-links a{
     margin-left: 30px;
     font-weight: 700;
-    color: #777;
+    color: $color-gray;
     text-decoration: none;
 }
 .newsletter{
-    border-top: 1px solid #474747;
+    border-top: 1px solid $color-solid-darken;
 }
 .newsletter form{
     width: 100% !important;
@@ -436,23 +399,24 @@ body{
     margin-bottom: 10px;
 }
 .newsletter form label{
-    color: #777;
+    color: $color-gray;
     font-size: 16px;
     font-weight: 700;
     margin: 27px 0 16px;
 }
 .newsletter form input{
-    background-color: rgb(76, 94, 94);
-    color: #fff !important;
+    background-color: $color-gray;
+    color: $color-background !important;
     border: none;
     height: 38px;
 }
 .newsletter form input:focus{
-    background-color: rgb(76, 94, 94);
+    color: $color-gray !important;
+    background-color: $color-background;
 }
 .custom-btn-warning{
-    background-color: #004AAD;
-    color: #fff;
+    background-color: $color-primary;
+    color: $color-background;
     transition: all 0.2s ease;
 }
 .custom-btn-warning:hover,
@@ -460,9 +424,9 @@ body{
 .custom-btn-warning:focus,
 .custom-btn-warning:active:focus,
 .custom-btn-warning:active:hover{
-    background-color:#002e69 !important;
-    border-color: #474747 !important;
-    color: #fff !important;
+    background-color:$color-primary-darken !important;
+    border-color: transparent !important;
+    color: $color-background !important;
 }
 .newsletter form button{
     border-radius: 0;
@@ -471,15 +435,15 @@ body{
 }
 
 #footer-social-copyright{
-    background-color: #deebfc;
-    color: #777;
+    background-color: $color-background;
+    color: $color-gray;
     font-weight: 700;
     padding: 20px 0;
     font-size: 16px;
 }
 
 #footer-social-copyright a{
-    color: #777;
+    color: $color-gray;
     font-size: 18px;
     text-decoration: none;
     margin: 0 5px;
@@ -495,15 +459,15 @@ body{
     padding: 20px 0;
 }
 .custom-breadcrumb a{
-    color: #303030;
+    color: $color-primary;
     text-decoration: none;
     transition: 0.2s ease;
 }
 .custom-breadcrumb a:hover{
-    color: #004AAD;
+    color: $color-primary-darken;
 }
 .custom-breadcrumb>li::before{
-    color: #002e69 !important;
+    color: $color-gray !important;
 }
 
 #carousel-product-images .custom-carousel-indicators{
@@ -517,7 +481,7 @@ body{
 }
 
 .product-category{
-    color: #777;
+    color: $color-gray;
 }
 #form-product-selection h3{
     font-size: 28px;
@@ -527,26 +491,26 @@ body{
     font-size: 28px;
 }
 .borders-between>div+div{
-    border-top: 1px solid #dfdfdf;
+    border-top: 1px solid $color-solid;
     padding: 15px 0;
 }
 .custom-size-and-color{
     display: inline-block;
     width: 32px;
     height: 32px;
-    color: #777;
-    border: 1px solid #dfdfdf;
+    color: $color-gray;
+    border: 1px solid $color-solid;
     text-align: center;
     margin: 10px 5px;
     font-weight: 700;
 }
 .custom-size-and-color.active{
-    color: #004AAD;
-    border-color: #004AAD;
+    color: $color-primary;
+    border-color: $color-primary;
 }
 .custom-size-and-color.custom-color.active{
-    border-color:#fff;
-    outline: #004AAD solid 1px;
+    border-color:$color-background;
+    outline: $color-primary solid 1px;
 }
 .size-and-color input[type="radio"]{
     display: none;
@@ -577,7 +541,7 @@ body{
     width: 80px;
     margin-left: 15px;
     max-height: 160px;
-    border: 1px solid #d1d1d1;
+    border: 1px solid $color-solid;
 }
 .comments .comment h4{
     font-size: 22px;
@@ -588,58 +552,16 @@ body{
 
 /* بداية تنسيقات صفحة عربة الشراء */
 .custom-btn-danger{
-    background-color: transparent;
-    border-color: #e2004b;
-    color: #e2004b;
+    @include button-outline-style($color-danger,transparent);
 }
-.custom-btn-danger:hover,
-.custom-btn-danger:active,
-.custom-btn-danger:focus,
-.custom-btn-danger:active:focus,
-.custom-btn-danger:active:hover{
-    border-color: #ad003a;
-    color: #ad003a;
-}
-#form-checkout tfoot td{
-    border-bottom: none;
-    font-size: 150%;
-    font-weight: normal;
-}
+
 
 #total-price-for-all-product{
-    color: #303030;
+    color: $color-primary;
     font-weight: 700;
 }
-.custom-table th,
-.custom-table td{
-    border-top: 1px solid #d1d1d1;
-    border-bottom: 1px solid #d1d1d1;
-    padding: 15px;
-    vertical-align: center;
-}
-.custom-table th{
-    color: #777;
-    font-weight: normal;
-}
-.custom-table th:first-child,
-.custom-table td:first-child{
-    width: 50%;
-}
-.custom-table th:not(:first-child),
-.custom-table td:not(:first-child){
-    text-align: center;
-}
-.custom-table .custom-media img{
-    width: 80px;
-    height: 80px;
-    margin-left: 15px;
-    border: 1px solid #d1d1d1;
-}
 
-.custom-media h4{
-    font-size: 18px;
-    margin: 10px 0;
-}
+
 /* نهاية تنسيقات صفحة عربة الشراء */
 
 
@@ -649,7 +571,7 @@ body{
     border-radius: 3px;
     width: 98%;
     font-size: 18px;
-    color: #303030;
+    color: $color-gray;
     padding: 0 15px;
     height: 45px !important;
 }
@@ -657,7 +579,7 @@ body{
 
 /* بداية تنسيقات صفحة البحث المتقدم */
 #searchAdvanced{
-    border: 1px solid #d1d1d1;
+    border: 1px solid $color-solid;
     padding-bottom: 20px;
     margin-bottom: 35px;
     height: fit-content;
@@ -677,7 +599,7 @@ body{
     padding: 5px;
 }
 .custom-list-group{
-    border-bottom: 1px solid #d1d1d1;
+    border-bottom: 1px solid $color-solid;
 }
 select,
 label,
@@ -687,13 +609,13 @@ input[type="radio"]{
 }
 .heading-with-border-bottom{
     font-size: 24px;
-    border-bottom: 1px solid #d1d1d1;
+    border-bottom: 1px solid $color-solid;
     padding-bottom: 15px;
 }
 .custom-pagination .page-link{
     margin: 0 3px !important;
-    border-color: #777 !important;
-    color: #777 !important;
+    border-color: $color-gray !important;
+    color: $color-gray !important;
     width: 32px !important;
     height: 32px !important;
     text-decoration: none !important;
@@ -703,16 +625,16 @@ input[type="radio"]{
 .custom-pagination .page-link:hover,
 .custom-pagination .page-link:focus,
 .custom-pagination .page-link:active{
-    background-color: #fff !important;
-    color: #004AAD !important;
-    border-color: #004AAD !important;
-    box-shadow: 0 0 2px #004AAD !important;
+    background-color: $color-background !important;
+    color: $color-primary !important;
+    border-color: $color-primary !important;
+    box-shadow: 0 0 2px $color-primary !important;
 }
 
 .custom-pagination .page-item.active .page-link{
-    background-color: #004AAD !important;
-    color: #fff !important;
-    border-color: #004AAD !important;
+    background-color: $color-primary !important;
+    color: $color-background !important;
+    border-color: $color-primary !important;
 }
 
 /* نهاية تنسيقات صفحة البحث المتقدم */
@@ -722,7 +644,7 @@ input[type="radio"]{
     border-radius: 0 !important;
 }
 .custom-textarea{
-    border: 1px solid #dfdfdf;
+    border: 1px solid $color-solid;
     box-shadow: none;
     border-radius: 0;
     max-height: 110px !important;
@@ -732,7 +654,7 @@ input[type="radio"]{
     padding: 0 !important;
 }
 .icons-social{
-    color: #004AAD;
+    color: $color-primary;
 }
 .custom-contact-information .custom-list-group{
     border: none;
@@ -770,8 +692,8 @@ input[type="radio"]{
     }
     .add-to-cart-btn{
         background-color: transparent;
-        color: #474747;
-        border: 1px solid #474747;
+        color: $color-primary;
+        border: 1px solid $color-primary;
         font-weight: 400;   
         margin-top: 10px;;
         
@@ -786,8 +708,8 @@ input[type="radio"]{
     }
 
     .custom-nav-form{
-        border-top: 1px solid #dfdfdf;
-        border-bottom: 1px solid #dfdfdf;
+        border-top: 1px solid $color-solid;
+        border-bottom: 1px solid $color-solid;
         padding: 10px 0;
         width: 100%;
     }
@@ -819,15 +741,10 @@ input[type="radio"]{
 
     .navbar-collapse{
         margin-top: 20px;
-        border-top: 1px solid #004AAD;
+        border-top: 1px solid $color-primary;
     }
     .custom-carousel-indicators{
         right: 28%;
-    }
-}
-@media (min-width: 767.98px) and (max-width: 991.98px){
-    .custom-thumbnail img{
-        height: 200px;
     }
 }
 @media (max-width: 767.98px) {
@@ -841,13 +758,6 @@ input[type="radio"]{
         margin: auto;
     }
 
-    .custom-thumbnail{
-    margin-bottom: 40px;
-    }
-
-    .custom-thumbnail img{
-        height: 250px;
-    }
     #carouselFeatures{
         padding-bottom: 25px;
     }
